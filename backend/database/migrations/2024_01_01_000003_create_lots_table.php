@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('produit_id')->constrained('produits')->onDelete('cascade');
             $table->decimal('quantite_initiale', 10, 2);
-            $table->decimal('quantite_actuelle', 10, 2)->comment('Stock physique restant');
+            $table->decimal('quantite_actuelle', 10, 2)->unsigned()->comment('Stock physique restant');
             $table->date('date_expiration')->comment('Donnée critique pour le FEFO');
             $table->decimal('prix_achat_unitaire', 10, 2);
             $table->timestamp('cree_le')->useCurrent();

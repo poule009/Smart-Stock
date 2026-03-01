@@ -29,4 +29,15 @@ class Lot extends Model
     {
         return $this->hasMany(Mouvement_Stock::class);
     }
+
+        // Validation pour garantir que quantite_actuelle >= 0
+        public static function boot()
+        {
+            parent::boot();
+            static::saving(function ($lot) {
+                if ($lot->quantite_actuelle < 0) {
+                    throw new \InvalidArgumentException('La quantité actuelle ne peut pas être négative.');
+                }
+            });
+        }
 }
