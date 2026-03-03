@@ -13,9 +13,13 @@ return new class extends Migration
             $table->string('nom');
             $table->string('email')->unique();
             $table->string('mot_de_passe');
-            $table->string('role')->comment('admin, cuisinier, serveur');
-            $table->softDeletes();
-            $table->timestamps();
+            $table->enum('role', ['admin', 'cuisinier', 'serveur'])->default('serveur');
+            $table->timestamp('cree_le')->nullable()->useCurrent();
+            $table->timestamp('mise_a_jour_le')->nullable()->useCurrent()->useCurrentOnUpdate();
+            $table->softDeletes('supprime_le');
+            
+           
+            $table->index('role');
         });
     }
 

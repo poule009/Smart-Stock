@@ -1,5 +1,3 @@
-
-
 # Smart-Stock
 
 Smart-Stock est une application de gestion de stock moderne, conçue pour les restaurants, commerces ou tout établissement nécessitant un suivi précis des produits, lots et mouvements de stock. Elle combine un backend Laravel (API, logique métier, base de données) et un frontend Angular (interface utilisateur).
@@ -10,7 +8,7 @@ Smart-Stock est une application de gestion de stock moderne, conçue pour les re
 Smart-Stock permet de :
 - Gérer les utilisateurs et leurs rôles (admin, cuisinier, serveur)
 - Suivre les catégories, produits, lots et mouvements de stock
-- Visualiser l’état du stock en temps réel
+- Visualiser l'état du stock en temps réel
 - Recevoir des alertes sur les seuils critiques
 - Historiser toutes les entrées et sorties de stock
 
@@ -22,9 +20,10 @@ Smart-Stock permet de :
 
 ---
 
-##  Schéma d’architecture
+##  Schéma d'architecture
 
-```mermaid
+```
+mermaid
 graph TD
     A[Visiteur] -->|Accès| B(Frontend Angular)
     B -->|Appels API| C(Backend Laravel)
@@ -41,7 +40,7 @@ graph TD
 ##  Fonctionnalités principales
 - Gestion des utilisateurs et rôles
 - Gestion des catégories et produits
-- Gestion des lots (quantité, date d’expiration, prix)
+- Gestion des lots (quantité, date d'expiration, prix)
 - Suivi des mouvements de stock (entrée, sortie, raison)
 - Alertes sur seuils critiques
 - Historique complet des opérations
@@ -61,50 +60,73 @@ graph TD
 
 ### Backend
 1. Installer les dépendances PHP :
-   ```sh
+   
+```
+sh
    cd backend
    composer install
-   ```
+   
+```
 2. Configurer le fichier `.env` (base de données, mail, etc.)
 3. Générer la clé d'application :
-   ```sh
+   
+```
+sh
    php artisan key:generate
-   ```
+   
+```
 4. Lancer les migrations :
-   ```sh
+   
+```
+sh
    php artisan migrate
-   ```
+   
+```
 5. (Optionnel) Lancer les seeders :
-   ```sh
+   
+```
+sh
    php artisan db:seed
-   ```
+   
+```
 6. Démarrer le serveur :
-   ```sh
+   
+```
+sh
    php artisan serve
-   ```
+   
+```
 
 ### Frontend
 1. Installer les dépendances Node.js :
-   ```sh
+   
+```
+sh
    cd frontend
    npm install
-   ```
+   
+```
 2. Démarrer le serveur Angular :
-   ```sh
+   
+```
+sh
    ng serve
-   ```
-3. Accéder à l’application : [http://localhost:4200](http://localhost:4200)
+   
+```
+3. Accéder à l'application : [http://localhost:4200](http://localhost:4200)
 
 ---
 
-## 🔍 Exemples d’utilisation
+## 🔍 Exemples d'utilisation
 
-### Exemple d’appel API (produits)
-```http
+### Exemple d'appel API (produits)
+```
+http
 GET /api/produits
 ```
 Réponse :
-```json
+```
+json
 [
   {
     "id": 1,
@@ -117,7 +139,7 @@ Réponse :
 ]
 ```
 
-### Exemple d’interface utilisateur
+### Exemple d'interface utilisateur
 *Liste des produits, alertes de stock, historique des mouvements, gestion des lots, etc.*
 
 ---

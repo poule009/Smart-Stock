@@ -11,6 +11,7 @@ class Produit extends Model
 
     protected $fillable = [
         'categorie_id',
+        'fournisseur_id',
         'nom',
         'unite',
         'seuil_alerte',
@@ -19,6 +20,11 @@ class Produit extends Model
     public function categorie()
     {
         return $this->belongsTo(Categorie::class);
+    }
+
+    public function fournisseur()
+    {
+        return $this->belongsTo(Fournisseur::class);
     }
 
     public function lots()
