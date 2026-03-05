@@ -15,9 +15,8 @@ return new class extends Migration
             $table->string('nom');
             $table->string('unite')->comment('kg, litre, unité, portion');
             $table->integer('seuil_alerte')->default(5);
-            $table->timestamp('cree_le')->nullable()->useCurrent();
-            $table->timestamp('mise_a_jour_le')->nullable()->useCurrent()->useCurrentOnUpdate();
-            $table->softDeletes('supprime_le');
+            $table->timestamps();
+            $table->softDeletes();
             
          
             $table->index('categorie_id');

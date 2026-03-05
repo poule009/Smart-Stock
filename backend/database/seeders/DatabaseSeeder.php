@@ -3,23 +3,29 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
+        // 1. Créer un admin par défaut (mot de passe connu)
+        User::factory()->admin()->create([
+            'nom'          => 'Admin',
+            'email'        => 'admin@smartstock.com',
+            'mot_de_passe' => 'password',
+        ]);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+        // 2. Créer quelques utilisateurs supplémentaires
+        User::factory()->count(4)->create();
+
+        // 3. Lancer les seeders dans le bon ordre
+        $this->call([
+            CategorieSeeder::class,
+            FournisseurSeeder::class,
+            ProduitSeeder::class,
+            LotSeeder::class,
+            MouvementStockSeeder::class,
         ]);
     }
 }

@@ -12,11 +12,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('produit_id')->constrained('produits')->onDelete('cascade');
             $table->decimal('quantite_initiale', 10, 2);
-            $table->decimal('quantite_actuelle', 10, 2)->comment('Stock physique restant');
+            $table->decimal('quantite_actuelle', 10, 2)->default(0)->comment('Stock physique restant');
             $table->date('date_expiration')->comment('Donnée critique pour le FEFO');
             $table->decimal('prix_achat_unitaire', 10, 2)->nullable();
-            $table->timestamp('cree_le')->nullable()->useCurrent();
-            $table->timestamp('mise_a_jour_le')->nullable()->useCurrent()->useCurrentOnUpdate();
+            $table->timestamps();
+            $table->softDeletes();
             
             
             $table->index('produit_id');

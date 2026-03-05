@@ -14,9 +14,10 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('mot_de_passe');
             $table->enum('role', ['admin', 'cuisinier', 'serveur'])->default('serveur');
-            $table->timestamp('cree_le')->nullable()->useCurrent();
-            $table->timestamp('mise_a_jour_le')->nullable()->useCurrent()->useCurrentOnUpdate();
-            $table->softDeletes('supprime_le');
+            $table->timestamp('email_verified_at')->nullable();
+            $table->rememberToken();
+            $table->timestamps();
+            $table->softDeletes();
             
            
             $table->index('role');

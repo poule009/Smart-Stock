@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Mouvement_Stock extends Model
 {
+    use HasFactory, SoftDeletes;
+
     protected $table = 'mouvements_stock';
 
     protected $fillable = [
@@ -14,19 +19,14 @@ class Mouvement_Stock extends Model
         'type',
         'quantite',
         'raison',
-        'cree_le',
     ];
 
-    protected $casts = [
-        'cree_le' => 'datetime',
-    ];
-
-    public function lot()
+    public function lot(): BelongsTo
     {
         return $this->belongsTo(Lot::class);
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Produit extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     protected $fillable = [
         'categorie_id',
@@ -17,17 +20,17 @@ class Produit extends Model
         'seuil_alerte',
     ];
 
-    public function categorie()
+    public function categorie(): BelongsTo
     {
         return $this->belongsTo(Categorie::class);
     }
 
-    public function fournisseur()
+    public function fournisseur(): BelongsTo
     {
         return $this->belongsTo(Fournisseur::class);
     }
 
-    public function lots()
+    public function lots(): HasMany
     {
         return $this->hasMany(Lot::class);
     }

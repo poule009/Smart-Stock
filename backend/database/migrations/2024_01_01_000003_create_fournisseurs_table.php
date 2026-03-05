@@ -14,9 +14,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('telephone');
             $table->text('adresse')->nullable();
-            $table->timestamp('cree_le')->nullable()->useCurrent();
-            $table->timestamp('mise_a_jour_le')->nullable()->useCurrent()->useCurrentOnUpdate();
-            $table->softDeletes('supprime_le');
+            $table->timestamps();
+            $table->softDeletes();
             
            
             $table->index('nom');

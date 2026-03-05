@@ -15,14 +15,12 @@ return new class extends Migration
             $table->enum('type', ['entree', 'sortie'])->comment('entrée (in) ou sortie (out)');
             $table->decimal('quantite', 10, 2);
             $table->string('raison')->comment('vente, perte, péremption, arrivage');
-            $table->timestamp('cree_le')->nullable()->useCurrent();
-            $table->timestamp('mise_a_jour_le')->nullable()->useCurrent()->useCurrentOnUpdate();
+            $table->timestamps();
+            $table->softDeletes();
             
            
             $table->index('lot_id');
             $table->index('user_id');
-            $table->index('type');
-            $table->index('raison');
         });
     }
 
